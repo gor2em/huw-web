@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: huw-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: huw-web
+  template:
+    metadata:
+      labels:
+        app: huw-web
+    spec:
+      containers:
+        - name: huw-web
+          image: XXXX/test-swr/huw-web:v1
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 50m
+              memory: 100Mi
+      imagePullSecrets:
+        - name: default-secret
